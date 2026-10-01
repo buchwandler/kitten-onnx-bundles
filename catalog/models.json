@@ -1,0 +1,240 @@
+{
+  "schema": 1,
+  "kind": "kitten-onnx-model-catalog",
+  "models": {
+    "nano-0.8-int8": {
+      "id": "nano-0.8-int8",
+      "aliases": [
+        "kitten-tts-nano-0.8-int8",
+        "nano-int8"
+      ],
+      "name": "Kitten TTS Nano",
+      "version": "0.8",
+      "language": "en-US",
+      "sample_rate": 24000,
+      "quality": "int8",
+      "runtime": {
+        "profile": "ONNX2"
+      },
+      "upstream": {
+        "provider": "huggingface",
+        "repository": "KittenML/kitten-tts-nano-0.8-int8",
+        "revision": "b5c9e5ce0faf0b025c0aa5afa02637c087f813ee",
+        "license": "apache-2.0"
+      },
+      "artifacts": [
+        {
+          "role": "model",
+          "format": "onnx",
+          "filename": "kitten_tts_nano_v0_8.onnx",
+          "url": "https://huggingface.co/KittenML/kitten-tts-nano-0.8-int8/resolve/b5c9e5ce0faf0b025c0aa5afa02637c087f813ee/kitten_tts_nano_v0_8.onnx",
+          "size": 24369971,
+          "sha256": "f7b0afcbee92870b32b8e0276d855b954dc25470c9f051b376ac7eee537c76fc"
+        },
+        {
+          "role": "voices",
+          "format": "npz",
+          "filename": "voices.npz",
+          "url": "https://huggingface.co/KittenML/kitten-tts-nano-0.8-int8/resolve/b5c9e5ce0faf0b025c0aa5afa02637c087f813ee/voices.npz",
+          "size": 3278902,
+          "sha256": "8aa7cee235abb0739cb51e6559685f65a4dacd95568833d05699b1633f519b3f"
+        }
+      ],
+      "voice_aliases": {
+        "Bella": "expr-voice-2-f",
+        "Jasper": "expr-voice-2-m",
+        "Luna": "expr-voice-3-f",
+        "Bruno": "expr-voice-3-m",
+        "Rosie": "expr-voice-4-f",
+        "Hugo": "expr-voice-4-m",
+        "Kiki": "expr-voice-5-f",
+        "Leo": "expr-voice-5-m"
+      },
+      "speed_priors": {
+        "expr-voice-2-f": 0.8,
+        "expr-voice-2-m": 0.8,
+        "expr-voice-3-m": 0.8,
+        "expr-voice-3-f": 0.8,
+        "expr-voice-4-m": 0.9,
+        "expr-voice-4-f": 0.8,
+        "expr-voice-5-m": 0.8,
+        "expr-voice-5-f": 0.8
+      },
+      "metadata": {
+        "parameters_millions": 15,
+        "upstream_model": "kitten-tts-nano-0.8"
+      }
+    },
+    "nano-0.8-fp32": {
+      "id": "nano-0.8-fp32",
+      "aliases": [
+        "kitten-tts-nano-0.8-fp32",
+        "nano-fp32"
+      ],
+      "name": "Kitten TTS Nano",
+      "version": "0.8",
+      "language": "en-US",
+      "sample_rate": 24000,
+      "quality": "fp32",
+      "runtime": {
+        "profile": "ONNX2"
+      },
+      "upstream": {
+        "provider": "huggingface",
+        "repository": "KittenML/kitten-tts-nano-0.8-fp32",
+        "revision": "87b12ff7859cdebd9c055c987a586101fad5b650",
+        "license": "apache-2.0"
+      },
+      "artifacts": [
+        {
+          "role": "model",
+          "format": "onnx",
+          "filename": "kitten_tts_nano_v0_8.onnx",
+          "url": "https://huggingface.co/KittenML/kitten-tts-nano-0.8-fp32/resolve/87b12ff7859cdebd9c055c987a586101fad5b650/kitten_tts_nano_v0_8.onnx",
+          "size": 56767095,
+          "sha256": "320564d2615f235de972ca27a7f39551c94185cfa24ca85b07a29084135f1e5e"
+        },
+        {
+          "role": "voices",
+          "format": "npz",
+          "filename": "voices.npz",
+          "url": "https://huggingface.co/KittenML/kitten-tts-nano-0.8-fp32/resolve/87b12ff7859cdebd9c055c987a586101fad5b650/voices.npz",
+          "size": 3278902,
+          "sha256": "8aa7cee235abb0739cb51e6559685f65a4dacd95568833d05699b1633f519b3f"
+        }
+      ],
+      "voice_aliases": {
+        "Bella": "expr-voice-2-f",
+        "Jasper": "expr-voice-2-m",
+        "Luna": "expr-voice-3-f",
+        "Bruno": "expr-voice-3-m",
+        "Rosie": "expr-voice-4-f",
+        "Hugo": "expr-voice-4-m",
+        "Kiki": "expr-voice-5-f",
+        "Leo": "expr-voice-5-m"
+      },
+      "speed_priors": {
+        "expr-voice-2-f": 0.8,
+        "expr-voice-2-m": 0.8,
+        "expr-voice-3-m": 0.8,
+        "expr-voice-3-f": 0.8,
+        "expr-voice-4-m": 0.9,
+        "expr-voice-4-f": 0.8,
+        "expr-voice-5-m": 0.8,
+        "expr-voice-5-f": 0.8
+      },
+      "metadata": {
+        "parameters_millions": 15,
+        "upstream_model": "kitten-tts-nano-0.8"
+      }
+    },
+    "micro-0.8": {
+      "id": "micro-0.8",
+      "aliases": [
+        "kitten-tts-micro-0.8",
+        "micro"
+      ],
+      "name": "Kitten TTS Micro",
+      "version": "0.8",
+      "language": "en-US",
+      "sample_rate": 24000,
+      "quality": null,
+      "runtime": {
+        "profile": "ONNX2"
+      },
+      "upstream": {
+        "provider": "huggingface",
+        "repository": "KittenML/kitten-tts-micro-0.8",
+        "revision": "1ccf72b2c2048fd17efac7de2fab32d10e225084",
+        "license": "apache-2.0"
+      },
+      "artifacts": [
+        {
+          "role": "model",
+          "format": "onnx",
+          "filename": "kitten_tts_micro_v0_8.onnx",
+          "url": "https://huggingface.co/KittenML/kitten-tts-micro-0.8/resolve/1ccf72b2c2048fd17efac7de2fab32d10e225084/kitten_tts_micro_v0_8.onnx",
+          "size": 41384970,
+          "sha256": "95481626fee1ba70ce683e69c534fc7cb38433c46ce42d3abbeafb4b9f1a4123"
+        },
+        {
+          "role": "voices",
+          "format": "npz",
+          "filename": "voices.npz",
+          "url": "https://huggingface.co/KittenML/kitten-tts-micro-0.8/resolve/1ccf72b2c2048fd17efac7de2fab32d10e225084/voices.npz",
+          "size": 3278902,
+          "sha256": "112710c1be8ad0e967c190fb0fd95cbe5848ec4791b93209f20b28b7da20dac1"
+        }
+      ],
+      "voice_aliases": {
+        "Bella": "expr-voice-2-f",
+        "Jasper": "expr-voice-2-m",
+        "Luna": "expr-voice-3-f",
+        "Bruno": "expr-voice-3-m",
+        "Rosie": "expr-voice-4-f",
+        "Hugo": "expr-voice-4-m",
+        "Kiki": "expr-voice-5-f",
+        "Leo": "expr-voice-5-m"
+      },
+      "speed_priors": {},
+      "metadata": {
+        "parameters_millions": 40,
+        "upstream_model": "kitten-tts-micro-0.8"
+      }
+    },
+    "mini-0.8": {
+      "id": "mini-0.8",
+      "aliases": [
+        "kitten-tts-mini-0.8",
+        "mini"
+      ],
+      "name": "Kitten TTS Mini",
+      "version": "0.8",
+      "language": "en-US",
+      "sample_rate": 24000,
+      "quality": null,
+      "runtime": {
+        "profile": "ONNX2"
+      },
+      "upstream": {
+        "provider": "huggingface",
+        "repository": "KittenML/kitten-tts-mini-0.8",
+        "revision": "c02725660cea441db4c383af69f1f26f5cd00947",
+        "license": "apache-2.0"
+      },
+      "artifacts": [
+        {
+          "role": "model",
+          "format": "onnx",
+          "filename": "kitten_tts_mini_v0_8.onnx",
+          "url": "https://huggingface.co/KittenML/kitten-tts-mini-0.8/resolve/c02725660cea441db4c383af69f1f26f5cd00947/kitten_tts_mini_v0_8.onnx",
+          "size": 78268016,
+          "sha256": "0f5bbae4fc4800c98dbc544a87ecfa79510de2fb8222db30d12e5bfe9177df91"
+        },
+        {
+          "role": "voices",
+          "format": "npz",
+          "filename": "voices.npz",
+          "url": "https://huggingface.co/KittenML/kitten-tts-mini-0.8/resolve/c02725660cea441db4c383af69f1f26f5cd00947/voices.npz",
+          "size": 3278902,
+          "sha256": "40ad2638952b77b7b2f30127e2608e169fc69dd256b53bd8aaa3409a33193c42"
+        }
+      ],
+      "voice_aliases": {
+        "Bella": "expr-voice-2-f",
+        "Jasper": "expr-voice-2-m",
+        "Luna": "expr-voice-3-f",
+        "Bruno": "expr-voice-3-m",
+        "Rosie": "expr-voice-4-f",
+        "Hugo": "expr-voice-4-m",
+        "Kiki": "expr-voice-5-f",
+        "Leo": "expr-voice-5-m"
+      },
+      "speed_priors": {},
+      "metadata": {
+        "parameters_millions": 80,
+        "upstream_model": "kitten-tts-mini-0.8"
+      }
+    }
+  }
+}

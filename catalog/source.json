@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "kind": "kitten-onnx-source-snapshot",
+  "snapshot_date": "2026-10-01",
+  "note": "Bootstrap snapshot manually normalized from KittenML v0.8 Hugging Face repositories. Revisions and large-artifact SHA-256/size values are pinned in models.json. Replace manual refresh with OnnxVoice catalog tooling once implemented.",
+  "repositories": [
+    {
+      "repository": "KittenML/kitten-tts-nano-0.8-int8",
+      "revision": "b5c9e5ce0faf0b025c0aa5afa02637c087f813ee",
+      "license": "apache-2.0"
+    },
+    {
+      "repository": "KittenML/kitten-tts-nano-0.8-fp32",
+      "revision": "87b12ff7859cdebd9c055c987a586101fad5b650",
+      "license": "apache-2.0"
+    },
+    {
+      "repository": "KittenML/kitten-tts-micro-0.8",
+      "revision": "1ccf72b2c2048fd17efac7de2fab32d10e225084",
+      "license": "apache-2.0"
+    },
+    {
+      "repository": "KittenML/kitten-tts-mini-0.8",
+      "revision": "c02725660cea441db4c383af69f1f26f5cd00947",
+      "license": "apache-2.0"
+    }
+  ]
+}

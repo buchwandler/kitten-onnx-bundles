@@ -1,0 +1,21 @@
+name: refresh-catalog
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Explain bootstrap status
+        run: |
+          echo "Network refresh is intentionally not automated in the MVP."
+          echo "When OnnxVoice ships 'catalog kitten build/verify', replace this step"
+          echo "with deterministic build + verification, matching pocket-onnx-bundles."
+      - run: python scripts/check_catalog.py

@@ -1,0 +1,7 @@
+kitten-onnx-bundles
+
+This repository does not redistribute KittenTTS model weights or voice-style data. Catalog entries
+reference upstream KittenML Hugging Face repositories at exact revisions.
+
+Upstream artifacts retain their upstream license and attribution. The KittenTTS v0.8 model
+repositories referenced by the bootstrap catalog declare Apache-2.0 at snapshot time.

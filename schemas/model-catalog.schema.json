@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/buchwandler/kitten-onnx-bundles/schema/v1",
+  "title": "Kitten ONNX model catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "kind",
+    "models"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "kind": {
+      "const": "kitten-onnx-model-catalog"
+    },
+    "models": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/model"
+      }
+    }
+  },
+  "$defs": {
+    "safeName": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "format",
+        "filename",
+        "url",
+        "size",
+        "sha256"
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "model",
+            "voices"
+          ]
+        },
+        "format": {
+          "enum": [
+            "onnx",
+            "npz"
+          ]
+        },
+        "filename": {
+          "$ref": "#/$defs/safeName"
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https://huggingface\\.co/[^/]+/[^/]+/resolve/[0-9a-f]{40}/.+$"
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "upstream": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "repository",
+        "revision",
+        "license"
+      ],
+      "properties": {
+        "provider": {
+          "const": "huggingface"
+        },
+        "repository": {
+          "type": "string",
+          "pattern": "^[^/\\\\\\s]+/[^/\\\\\\s]+$"
+        },
+        "revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "license": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "aliases",
+        "name",
+        "version",
+        "language",
+        "sample_rate",
+        "quality",
+        "runtime",
+        "upstream",
+        "artifacts",
+        "voice_aliases",
+        "speed_priors",
+        "metadata"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/safeName"
+        },
+        "aliases": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/safeName"
+          }
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language": {
+          "type": "string",
+          "minLength": 2
+        },
+        "sample_rate": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "quality": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "int8",
+            "fp32",
+            null
+          ]
+        },
+        "runtime": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "profile"
+          ],
+          "properties": {
+            "profile": {
+              "enum": [
+                "ONNX1",
+                "ONNX2"
+              ]
+            }
+          }
+        },
+        "upstream": {
+          "$ref": "#/$defs/upstream"
+        },
+        "artifacts": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        },
+        "voice_aliases": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "$ref": "#/$defs/safeName"
+          }
+        },
+        "speed_priors": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "metadata": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}
