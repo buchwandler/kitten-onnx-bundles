@@ -112,17 +112,22 @@ The validator checks:
 
 ## Refresh policy
 
-The checked-in catalog is a bootstrap snapshot, not a network crawler.
+The checked-in catalog is pinned data, not a model mirror or network crawler. Use OnnxVoice catalog tooling to refresh its upstream revisions and artifact metadata:
 
-After `onnxvoice catalog kitten build/verify` exists, move refresh ownership there, matching the
-Pocket repository:
-
-```text
-onnxvoice catalog kitten build ...
-onnxvoice catalog kitten verify ...
+```bash
+onnxvoice catalog kitten build \
+  --seed-catalog catalog/models.json \
+  --output catalog/models.json \
+  --source-output catalog/source.json \
+  --revision main
+onnxvoice catalog kitten verify \
+  --catalog catalog/models.json \
+  --source catalog/source.json
 ```
 
-The included refresh workflow is manual-only until that command exists.
+The existing normalized catalog is the seed manifest for stable model IDs, aliases, language, quality, and upstream repositories. The builder resolves each listed repository to an immutable revision, reads its authoritative `config.json` and Hugging Face file metadata, and uses LFS size/SHA-256 values when available. It streams an artifact only when the repository does not expose usable integrity metadata. Output is deterministic for a fixed upstream revision. Build requires network access; verify is offline.
+
+Review the catalog and source diffs before merging. The manual GitHub workflow runs this refresh and commits changed catalog files to the branch on which the workflow was dispatched.
 
 ## Licensing
 

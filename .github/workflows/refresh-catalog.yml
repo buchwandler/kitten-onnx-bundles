@@ -10,12 +10,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: buchwandler/onnxvoice
+          path: onnxvoice
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Explain bootstrap status
+      - name: Install OnnxVoice catalog tooling
+        run: python -m pip install ./onnxvoice
+      - name: Refresh and verify the catalog
         run: |
-          echo "Network refresh is intentionally not automated in the MVP."
-          echo "When OnnxVoice ships 'catalog kitten build/verify', replace this step"
-          echo "with deterministic build + verification, matching pocket-onnx-bundles."
-      - run: python scripts/check_catalog.py
+          onnxvoice catalog kitten build \
+            --seed-catalog catalog/models.json \
+            --output catalog/models.json \
+            --source-output catalog/source.json \
+            --revision main
+          onnxvoice catalog kitten verify \
+            --catalog catalog/models.json \
+            --source catalog/source.json
+          python scripts/check_catalog.py
+          git diff --check
+      - name: Commit catalog updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add catalog/models.json catalog/source.json
+          if git diff --cached --quiet; then
+            echo "Catalog is unchanged."
+            exit 0
+          fi
+          git commit -m "Refresh Kitten ONNX model catalog"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
